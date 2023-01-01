@@ -1,0 +1,29 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "kuwulkid:item/bountiful_sickle"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-120, -90, -90],
+			"translation": [0, 6.75, 3.25]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-120, 90, 90],
+			"translation": [0, 6, 3.25]
+		},
+		"firstperson_righthand": {
+			"rotation": [-120, 90, 90],
+			"translation": [0, 4, 2.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [-120, 90, 90],
+			"translation": [0, 4, 2.5]
+		},
+		"ground": {
+			"translation": [0, 4.5, 0],
+			"scale": [0.75, 0.75, 0.75]
+		}
+	}
+}

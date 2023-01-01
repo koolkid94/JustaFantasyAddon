@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "fire=true":{"model":"kuwulkid:block/stone_fire_bowl_on"},
+    "fire=false":{"model":"kuwulkid:block/stone_fire_bowl_off"}
+
+  }
+}

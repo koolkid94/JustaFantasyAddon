@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "C#",
+    "B#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:oak_logz"
+    },
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "B": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:oil_rig",
+    "count": 1
+  }
+}

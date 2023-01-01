@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:iron_helmet"
+  },
+  "addition": {
+    "item": "minecraft:emerald"
+  },
+  "result": {
+    "item": "kuwulkid:vanguard_helmet"
+  }
+}

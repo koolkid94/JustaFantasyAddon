@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:flint"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "kuwulkid:oil"
+    }
+  ],
+  "result": {
+    "item": "kuwulkid:spark_powder",
+    "count": 3
+  }
+}

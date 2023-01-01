@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuwulkid:spark_powder"
+    },
+    {
+      "item": "kuwulkid:spark_powder"
+    },
+    {
+      "item": "minecraft:flower_pot"
+    }
+  ],
+  "result": {
+    "item": "kuwulkid:oil_jar",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "kuwulkid:spark_powder"
+    },
+    {
+      "item": "kuwulkid:spark_powder"
+    },
+    {
+      "item": "minecraft:paper"
+    }
+  ],
+  "result": {
+    "item": "minecraft:firework_rocket",
+    "count": 9
+  }
+}

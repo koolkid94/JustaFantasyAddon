@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "kuwulkid:shrimp_tail"
+  },
+  "result": "kuwulkid:cooked_shrimp_tail",
+  "experience": 0.35,
+  "cookingtime": 200
+}

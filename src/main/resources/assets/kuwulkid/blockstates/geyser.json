@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "tapped=false":{"model":"kuwulkid:block/geyser"},
+    "tapped=true":{"model":"kuwulkid:block/tapped_geyser"}
+
+  }
+}

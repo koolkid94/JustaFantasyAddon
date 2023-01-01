@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "LSL",
+    " L "
+  ],
+  "key": {
+    "#": {
+      "item": "kuwulkid:crow_feather"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "S": {
+      "item": "minecraft:skeleton_skull"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:skull_mask",
+    "count": 1
+  }
+}

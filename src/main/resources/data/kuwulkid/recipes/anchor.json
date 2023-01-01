@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " i#",
+    "P #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_block"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "P": {
+      "item": "minecraft:prismarine_shard"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:sunken_anchor",
+    "count": 1
+  }
+}

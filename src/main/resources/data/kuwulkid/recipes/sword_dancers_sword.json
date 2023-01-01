@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "  #",
+        " g ",
+        "#  "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:iron_sword"
+        },
+        "g": {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    "result": {
+        "item": "kuwulkid:sword_dancers_sword",
+        "count": 1
+    }
+}

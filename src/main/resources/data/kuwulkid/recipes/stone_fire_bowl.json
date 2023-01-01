@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#M#",
+    "S S"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:chiseled_stone_bricks"
+    },
+    "M": {
+      "item": "minecraft:magma_block"
+    },
+    "S": {
+      "item": "minecraft:stone_brick_stairs"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:stone_fire_bowl",
+    "count": 1
+  }
+}

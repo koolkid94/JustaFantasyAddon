@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  g",
+    " g ",
+    "/  "
+  ],
+  "key": {
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "/": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:blaze_cutlass",
+    "count": 1
+  }
+}

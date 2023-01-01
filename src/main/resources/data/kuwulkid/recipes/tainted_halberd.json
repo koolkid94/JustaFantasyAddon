@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #C",
+    " /C",
+    "/  "
+  ],
+  "key": {
+    "#": {
+      "item": "kuwulkid:abyssal_stone"
+    },
+    "C": {
+      "item": "minecraft:crying_obsidian"
+    },
+    "/": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:tainted_halberd",
+    "count": 1
+  }
+}

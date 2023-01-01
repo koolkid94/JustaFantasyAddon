@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#M#",
+    "R R"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:sandstone"
+    },
+    "M": {
+      "item": "minecraft:magma_block"
+    },
+    "R": {
+      "item": "minecraft:sandstone_stairs"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:sandstone_fire_bowl",
+    "count": 1
+  }
+}

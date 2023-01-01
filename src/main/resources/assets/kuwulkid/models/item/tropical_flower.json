@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "kuwulkid:item/tropical_flower",
+    "particle": "block/bamboo_stalk"
+  }
+}

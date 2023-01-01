@@ -1,0 +1,48 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.spiked.dummy": {
+			"loop": true
+		},
+		"animation.spiked.block": {
+			"animation_length": 0.83333,
+			"bones": {
+				"spikes": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0833": {
+							"vector": [0, 0, -0.25],
+							"easing": "easeOutCirc"
+						},
+						"0.7083": {
+							"vector": [0, 0, -0.25],
+							"easing": "easeInCirc"
+						},
+						"0.7917": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.0833": {
+							"vector": [1, 1, 1.1],
+							"easing": "easeOutCirc"
+						},
+						"0.7083": {
+							"vector": [1, 1, 1.1],
+							"easing": "easeInCirc"
+						},
+						"0.7917": {
+							"vector": [1, 1, 1]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

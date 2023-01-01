@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "kuwulkid:pike"
+    ]
+  },
+  "criteria": {
+    "has_iron_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_ingot",
+              "minecraft:leather",
+              "minecraft:white_wool",
+              "minecraft:gray_wool",
+              "minecraft:pink_wool",
+              "minecraft:black_wool",
+              "minecraft:light_gray_wool",
+              "minecraft:porkchop",
+              "minecraft:mutton",
+              "minecraft:beef",
+              "rotten:hide",
+              "environmentz:wolf_pelt"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "kuwulkid:pike"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

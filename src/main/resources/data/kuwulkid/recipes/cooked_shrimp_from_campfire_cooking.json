@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "kuwulkid:shrimp_tail"
+  },
+  "result": "kuwulkid:cooked_shrimp_tail",
+  "experience": 0.35,
+  "cookingtime": 600
+}

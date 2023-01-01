@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "i",
+    "/"
+  ],
+  "key": {
+    "#": {
+      "item": "kuwulkid:scorpion_stinger"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:scorpion_fang",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "weight": 9,
+          "name": "minecraft:cactus"
+        },
+        {
+          "type": "item",
+          "weight": 1,
+          "name": "kuwulkid:cactus_fruit"
+        }
+      ]
+    }
+  ]
+}

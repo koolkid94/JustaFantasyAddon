@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "kuwulkid",
+  "version": "${version}",
+
+  "name": "Just a Fantasy Addon",
+  "description": "A little addon of sorts. uwu",
+  "authors": [
+    "kuwulkid94!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/kuwulkid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.kuwulkid94.kuwulkid.JustaFantasyAddon"
+    ],
+    "client": [
+      "net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod"
+    ]
+  },
+  "mixins": [
+    "kuwulkid.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.19.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*",
+    "physicsmod": ">=2.2.3"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "crow_idle": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_idle",
+    "sounds": [
+      "kuwulkid:crow_idle"
+    ]
+  },
+  "crow_idle_0": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_idle_0",
+    "sounds": [
+      "kuwulkid:crow_idle_0"
+    ]
+  },
+  "crow_idle_1": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_idle_1",
+    "sounds": [
+      "kuwulkid:crow_idle_1"
+    ]
+  },
+  "crow_idle_2": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_idle_2",
+    "sounds": [
+      "kuwulkid:crow_idle_2"
+    ]
+  },
+  "crow_idle_3": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_idle_3",
+    "sounds": [
+      "kuwulkid:crow_idle_3"
+    ]
+  },
+  "crow_hurt": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_hurt",
+    "sounds": [
+      "kuwulkid:crow_hurt"
+    ]
+  },
+  "crow_death": {
+    "category": "entity",
+    "subtitle": "kuwulkid.crow_death",
+    "sounds": [
+      "kuwulkid:crow_death"
+    ]
+  },
+  "scorpion_hurt": {
+    "category": "entity",
+    "subtitle": "kuwulkid.scorpion_hurt",
+    "sounds": [
+      "kuwulkid:scorpion_hurt"
+    ]
+  },
+  "scorpion_idle": {
+    "category": "entity",
+    "subtitle": "kuwulkid.scorpion_idle",
+    "sounds": [
+      "kuwulkid:scorpion_idle"
+    ]
+  },
+  "scorpion_walk": {
+    "category": "entity",
+    "subtitle": "kuwulkid.scorpion_walk",
+    "sounds": [
+      "kuwulkid:scorpion_walk"
+    ]
+  },
+  "scorpion_attack": {
+    "category": "entity",
+    "subtitle": "kuwulkid.scorpion_attack",
+    "sounds": [
+      "kuwulkid:scorpion_attack"
+    ]
+  },
+  "shrimp_idle": {
+    "category": "entity",
+    "subtitle": "kuwulkid.shrimp_idle",
+    "sounds": [
+      "kuwulkid:shrimp_idle"
+    ]
+  },
+  "firebowl_woosh": {
+    "category": "block",
+    "subtitle": "kuwulkid.firebowl_woosh",
+    "sounds": [
+      "kuwulkid:firebowl_woosh"
+    ]
+  },
+  "firebowl_woosh_1": {
+    "category": "block",
+    "subtitle": "kuwulkid.firebowl_woosh_1",
+    "sounds": [
+      "kuwulkid:firebowl_woosh_1"
+    ]
+  },
+  "firebowl_woosh_2": {
+    "category": "block",
+    "subtitle": "kuwulkid.firebowl_woosh_2",
+    "sounds": [
+      "kuwulkid:firebowl_woosh_2"
+    ]
+  }
+}

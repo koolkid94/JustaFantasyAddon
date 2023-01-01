@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  #",
+    " B ",
+    "/  "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:brain_coral"
+    },
+    "B": {
+      "item": "minecraft:brain_coral_block"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "kuwulkid:sword_coral_blade",
+    "count": 1
+  }
+}
