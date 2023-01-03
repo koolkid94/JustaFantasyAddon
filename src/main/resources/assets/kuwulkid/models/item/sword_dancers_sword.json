@@ -26,7 +26,8 @@
 			"scale": [2, 2, 1]
 		},
 		"ground": {
-			"translation": [1.5, 5.5, 0]
+			"translation": [1.5, 2, 0],
+			"scale": [0.75, 0.75, 0.75]
 		},
 		"gui": {
 			"translation": [1.75, 2.75, 0],
@@ -34,7 +35,7 @@
 		},
 		"head": {
 			"translation": [2, 6.25, 0],
-			"scale": [1.75, 1.75, 1.75]
+			"scale": [1.1, 1.1, 1]
 		},
 		"fixed": {
 			"translation": [1.75, 1.75, 0],
