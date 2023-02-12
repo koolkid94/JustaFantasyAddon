@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 public enum ModArmorMaterials implements ArmorMaterial {
 
     bone("bone", 10, new int[]{1, 4, 5, 2}, 8, SoundEvents.ITEM_ARMOR_EQUIP_TURTLE, 0.0F, 0.0F, () -> {
-        return Ingredient.ofItems(new ItemConvertible[]{Items.IRON_INGOT});
+        return Ingredient.ofItems(new ItemConvertible[]{Items.BONE});
     }),
     abyssal("abyssal", 4, new int[]{2, 2, 2, 2}, 10, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> {
         return Ingredient.ofItems(new ItemConvertible[]{ModItems.ABYSSAL_STONE});

@@ -51,9 +51,9 @@ public class ModItems {
             new SpawnEggItem(ModEntities.SHRIMP,0xff9ab8, 0xffbd9a,
                     new FabricItemSettings().group(ItemGroup.MISC).maxCount(64)));
 
-    //public static final Item SHAMAN_SPAWN_EGG = registerItem("shaman_spawn_egg",
-            //new SpawnEggItem(ModEntities.SHAMAN,0x31badc, 0xdc319a,
-                    //new FabricItemSettings().group(ItemGroup.MISC).maxCount(64)));
+    public static final Item SHAMAN_SPAWN_EGG = registerItem("shaman_spawn_egg",
+            new SpawnEggItem(ModEntities.SHAMAN,0x31badc, 0xdc319a,
+                    new FabricItemSettings().group(ItemGroup.MISC).maxCount(64)));
 
     public static final Item TAINTED_ENDERMAN_SPAWN_EGG = registerItem("tainted_enderman_spawn_egg",
             new SpawnEggItem(ModEntities.TAINTED_ENDERMAN,0x000000, 0x2d6087,

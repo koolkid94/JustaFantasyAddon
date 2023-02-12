@@ -32,10 +32,10 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, NautilusEntity::new)
                     .dimensions(EntityDimensions.fixed(0.55f,0.55f)).build());
 
-    //public static final EntityType<ShamanEntity> SHAMAN = Registry.register(
-           // Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "shaman"),
-           // FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ShamanEntity::new)
-                    //.dimensions(EntityDimensions.fixed(0.6f,1.95f)).build());
+    public static final EntityType<ShamanEntity> SHAMAN = Registry.register(
+            Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "shaman"),
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ShamanEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.6f,1.95f)).build());
 
     public static final EntityType<TaintedEndermanEntity> TAINTED_ENDERMAN = Registry.register(
             Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "tainted_enderman"),

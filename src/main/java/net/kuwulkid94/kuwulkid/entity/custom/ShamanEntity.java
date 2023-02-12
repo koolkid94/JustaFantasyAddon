@@ -35,6 +35,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -42,6 +43,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -69,7 +71,7 @@ public class ShamanEntity extends WanderingTraderEntity implements IAnimatable, 
     public static DefaultAttributeContainer.Builder setAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.22);
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -77,22 +79,32 @@ public class ShamanEntity extends WanderingTraderEntity implements IAnimatable, 
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shaman.walk", true));
             return PlayState.CONTINUE;
         }
-        else if(this.isDrinking() == true){
+        if(this.isDrinking() == true){
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shaman.drink", false));
             //System.out.println("Drinking!");
-            return PlayState.CONTINUE;
         }
         else {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shaman.idle", true));
-            return PlayState.CONTINUE;
         }
+        return PlayState.CONTINUE;
     }
 
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        animationData.addAnimationController(new AnimationController(this, "controller",
+                0, this::predicate));
+        animationData.addAnimationController(new AnimationController(this, "attackController",
+                0, this::attackPredicate));
+    }
 
+    private PlayState attackPredicate(AnimationEvent event) {
+        if(this.isAttacking() && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
+            event.getController().markNeedsReload();
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.shaman.attack", false));
+            this.handSwinging = false;
+        }
+        return PlayState.CONTINUE;
     }
 
     @Override
@@ -103,43 +115,17 @@ public class ShamanEntity extends WanderingTraderEntity implements IAnimatable, 
 
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, new ProjectileAttackGoal(this, 1.0, 60, 10.0F));
+        //this.goalSelector.add(2, new ProjectileAttackGoal(this, 1.0, 60, 10.0F));
         this.goalSelector.add(2, new TemptGoal(this, 1.2, BREEDING_INGREDIENT, false));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(7, new LookAroundGoal(this));
-        this.goalSelector.add(8, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
-
-
-        this.targetSelector.add(9, (new ActiveTargetGoal(this, MerchantEntity.class, true)).setMaxTimeWithoutVisibility(300));
-        //this.targetSelector.add(2, (new ActiveTargetGoal(this, VillagerEntity.class, false)).setMaxTimeWithoutVisibility(300));
-        this.targetSelector.add(2, (new ActiveTargetGoal(this, ZombieEntity.class, true)).setMaxTimeWithoutVisibility(300));
-        //this.targetSelector.add(3, (new ActiveTargetGoal(this, ZombieVillagerEntity.class, false)).setMaxTimeWithoutVisibility(300));
-        //this.targetSelector.add(3, (new ActiveTargetGoal(this, PillagerEntity.class, false)).setMaxTimeWithoutVisibility(300));
-        //this.targetSelector.add(3, (new ActiveTargetGoal(this, VindicatorEntity.class, false)).setMaxTimeWithoutVisibility(300));
+        this.goalSelector.add(2, new WanderAroundFarGoal(this, 1.0));
+        this.goalSelector.add(3, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(4, new LookAroundGoal(this));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
+        this.goalSelector.add(2, new ProjectileAttackGoal(this, 1.0, 60, 10.0F));
         this.targetSelector.add(2, (new ActiveTargetGoal(this, RaiderEntity.class, false)).setMaxTimeWithoutVisibility(300));
-        //this.targetSelector.add(4, new ActiveTargetGoal(this, EvokerEntity.class, false));
-        this.targetSelector.add(1, new RevengeGoal(this, new Class[]{MerchantEntity.class}));
-    }
-
-    @Override
-    protected void afterUsing(TradeOffer offer) {
-        if (offer.shouldRewardPlayerExperience()) {
-            int i = 3 + this.random.nextInt(4);
-            this.world.spawnEntity(new ExperienceOrbEntity(this.world, this.getX(), this.getY() + 0.5, this.getZ(), i));
-        }
-
-    }
-
-    @Override
-    protected void fillRecipes() {
-    }
+        this.targetSelector.add(2, (new ActiveTargetGoal(this, ZombieEntity.class, true)).setMaxTimeWithoutVisibility(300));
 
 
-    @Nullable
-    @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return null;
     }
 
     protected void initDataTracker() {
@@ -196,6 +182,7 @@ public class ShamanEntity extends WanderingTraderEntity implements IAnimatable, 
                 else if(this.random.nextFloat() < 0.05F && this.getHealth() <= 5) {
                     potion = Potions.INVISIBILITY;
                 }
+
                 if (potion != null) {
                     this.equipStack(EquipmentSlot.MAINHAND, PotionUtil.setPotion(new ItemStack(Items.POTION), potion));
                     this.drinkTimeLeft = this.getMainHandStack().getMaxUseTime();
@@ -239,195 +226,25 @@ public class ShamanEntity extends WanderingTraderEntity implements IAnimatable, 
             double f = target.getZ() + vec3d.z - this.getZ();
             double g = Math.sqrt(d * d + f * f);
             Potion potion = Potions.SLOWNESS;
-            if (target instanceof MerchantEntity || target instanceof VillagerEntity) {
-                if (target.getHealth() <= target.getMaxHealth()/2.0 ) {
-                    potion = Potions.HEALING;
-                }
-                if(target.hasStatusEffect(StatusEffects.SLOWNESS))
-                {
-                    target.clearStatusEffects();
-                    this.world.addParticle(ParticleTypes.ELECTRIC_SPARK, this.getX() + this.random.nextGaussian() * 0.12999999523162842, this.getBoundingBox().maxY + 0.5 + this.random.nextGaussian() * 0.12999999523162842, this.getZ() + this.random.nextGaussian() * 0.12999999523162842, 0.0, 0.0, 0.0);
-
-                }
-                else if (target.getHealth() < target.getMaxHealth() && !this.hasStatusEffect(StatusEffects.REGENERATION)) {
-                    potion = Potions.REGENERATION;
-                }
-                else{
-                    potion = Potions.LUCK;
-                }
-                this.setTarget((LivingEntity)null);
-            }
             if (target instanceof ZombieEntity) {
                     potion = Potions.HEALING;
-                this.setTarget((LivingEntity)null);
             }
 
             PotionEntity potionEntity = new PotionEntity(this.world, this);
             potionEntity.setItem(PotionUtil.setPotion(new ItemStack(Items.SPLASH_POTION), potion));
             potionEntity.setPitch(potionEntity.getPitch() - -20.0F);
             potionEntity.setVelocity(d, e + g * 0.2, f, 0.75F, 8.0F);
+            if (!this.isSilent()) {
+                this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_WITCH_THROW, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
+            }
 
-            if((target instanceof MerchantEntity) && (potion == Potions.SLOWNESS || potion == Potions.LUCK)) {
-                System.out.println(target);
-                System.out.println(potion);
-                //this.world.spawnEntity(potionEntity);
-            }
-            else
-            {
-                this.world.spawnEntity(potionEntity);
-                if (!this.isSilent()) {
-                    this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_SPLASH_POTION_THROW, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
-                }
-            }
+            this.world.spawnEntity(potionEntity);
         }
     }
 
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
         return 1.62F;
     }
-
-    public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ItemStack itemStack = player.getStackInHand(hand);
-        if (!itemStack.isOf(Items.VILLAGER_SPAWN_EGG) && this.isAlive() && !this.isBaby()) {
-            if (hand == Hand.MAIN_HAND) {
-                player.incrementStat(Stats.TALKED_TO_VILLAGER);
-                if(player.getMainHandStack().getItem() == Items.SKELETON_SKULL) {
-                    this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-                    this.world.addParticle(ParticleTypes.HAPPY_VILLAGER, this.getX() + this.random.nextGaussian() * 0.12999999523162842, this.getBoundingBox().maxY + 0.5 + this.random.nextGaussian() * 0.12999999523162842, this.getZ() + this.random.nextGaussian() * 0.12999999523162842, 0.0, 0.0, 0.0);
-                    this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_VILLAGER_CELEBRATE, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 1200, 1), player);
-                    BlockPos pos = this.getBlockPos();
-                    world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(ModItems.SKULL_MASK, 1)));
-                    if(!player.isCreative() && !world.isClient) {
-                        player.getMainHandStack().decrement(1);
-                    }
-                }
-
-                if(player.getMainHandStack().getItem() == Items.EMERALD) {
-                    this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-                    this.world.addParticle(ParticleTypes.HAPPY_VILLAGER, this.getX() + this.random.nextGaussian() * 0.12999999523162842, this.getBoundingBox().maxY + 0.5 + this.random.nextGaussian() * 0.12999999523162842, this.getZ() + this.random.nextGaussian() * 0.12999999523162842, 0.0, 0.0, 0.0);
-                    this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_VILLAGER_CELEBRATE, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
-                    BlockPos pos = this.getBlockPos();
-
-                    int rand = (int) (((numTwo - numOne + 1) * Math.random() + numOne));
-                    int randCount = (int) ((3 - numOne + 1) * Math.random() + numOne) + 1;
-                    if(rand == 0 && !player.hasStatusEffect(StatusEffects.LUCK)) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(ModItems.SCORPION_STINGER, randCount)));
-                    }
-                    else if(rand == 1 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(ModItems.CROW_FEATHER, randCount)));
-                    }
-                    else if(rand == 2 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.NETHER_WART, randCount)));
-                    }
-                    else if(rand == 3 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.GLOW_INK_SAC, randCount)));
-                    }
-                    else if(rand == 4 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.COPPER_INGOT, randCount)));
-                    }
-                    else if(rand == 5 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.PRISMARINE_SHARD, randCount)));
-                    }
-                    else if(rand == 6 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.PRISMARINE_CRYSTALS, randCount)));
-                    }
-                    else if(rand == 7 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.GLOWSTONE_DUST, randCount)));
-                    }
-                    else if(rand == 8 && !player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.JUNGLE_SAPLING, randCount)));
-                    }
-
-                    //lucky items
-
-                    else if(rand == 0 && player.hasStatusEffect(StatusEffects.LUCK)) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.SCUTE, randCount)));
-                    }
-                    else if(rand == 1 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.EXPERIENCE_BOTTLE, randCount)));
-                    }
-                    else if(rand == 2 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.BLAZE_POWDER, randCount)));
-                    }
-                    else if(rand == 3 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.GHAST_TEAR, randCount)));
-                    }
-                    else if(rand == 4 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.AMETHYST_SHARD, randCount)));
-                    }
-                    else if(rand == 5 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.NAUTILUS_SHELL, randCount)));
-                    }
-                    else if(rand == 6 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(ModItems.SCORPION_BAG, randCount)));
-                    }
-                    else if(rand == 7 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.AXOLOTL_BUCKET, 1)));
-                    }
-                    else if(rand == 8 && player.hasStatusEffect(StatusEffects.LUCK)){
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(ModItems.CACTUS_FRUIT, randCount)));
-                    }
-
-                    else {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.EMERALD,1 )));
-                    }
-
-                    if(!player.isCreative() && !world.isClient) {
-                        player.getMainHandStack().decrement(1);
-                    }
-                }
-
-                if(player.getMainHandStack().getItem() == Items.EMERALD_BLOCK) {
-                    this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-                    this.world.addParticle(ParticleTypes.HAPPY_VILLAGER, this.getX() + this.random.nextGaussian() * 0.12999999523162842, this.getBoundingBox().maxY + 0.5 + this.random.nextGaussian() * 0.12999999523162842, this.getZ() + this.random.nextGaussian() * 0.12999999523162842, 0.0, 0.0, 0.0);
-                    this.world.playSound((PlayerEntity)null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_VILLAGER_CELEBRATE, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
-                    BlockPos pos = this.getBlockPos();
-                    int rand = (int) (((numTwo - numOne + 1) * Math.random() + numOne));
-
-                    if(rand == 0 && player.hasStatusEffect(StatusEffects.LUCK)) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.BUDDING_AMETHYST, 1)));
-                    }
-                    else if(rand == 1 ) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_DIAMOND_ORE, 2)));
-                    }
-                    else if(rand == 2 ) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_EMERALD_ORE, 2)));
-                    }
-                    else if(rand == 3 ) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_GOLD_ORE, 2)));
-                    }
-                    else if(rand == 4 ) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_LAPIS_ORE, 2)));
-                    }
-                    else if(rand == 5) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_IRON_ORE, 2)));
-                    }
-                    else if(rand == 6) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_COPPER_ORE, 2)));
-                    }
-                    else if(rand == 7) {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.DEEPSLATE_REDSTONE_ORE, 2)));
-                    }
-                    else
-                    {
-                        world.spawnEntity(new ItemEntity(world, (double) pos.getX() + Math.random(), (double) pos.getY() + 1, (double) pos.getZ() + Math.random(), new ItemStack(Items.EMERALD_BLOCK, 1)));
-                    }
-
-                    if(!player.isCreative() && !world.isClient) {
-                        player.getMainHandStack().decrement(1);
-                    }
-                }
-
-
-
-            }
-            return ActionResult.success(this.world.isClient);
-        } else {
-            return super.interactMob(player, hand);
-        }
-    }
-
 
     private static final Ingredient BREEDING_INGREDIENT;
     static {

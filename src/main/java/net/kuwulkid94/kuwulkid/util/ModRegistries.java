@@ -25,7 +25,7 @@ public class ModRegistries {
             FabricDefaultAttributeRegistry.register(ModEntities.SCORPION, ScorpionEntity.setAttributes());
             FabricDefaultAttributeRegistry.register(ModEntities.SHRIMP, ShrimpEntity.setAttributes());
             FabricDefaultAttributeRegistry.register(ModEntities.NAUTILUS, NautilusEntity.setAttributes());
-            //FabricDefaultAttributeRegistry.register(ModEntities.SHAMAN, ShamanEntity.setAttributes());
+            FabricDefaultAttributeRegistry.register(ModEntities.SHAMAN, ShamanEntity.setAttributes());
             FabricDefaultAttributeRegistry.register(ModEntities.TAINTED_ENDERMAN, TaintedEndermanEntity.setAttributes());
 
         }

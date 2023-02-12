@@ -17,18 +17,14 @@ import org.spongepowered.asm.mixin.Overwrite;
 public class postHitMixin {
     @Overwrite()
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker){
-        System.out.println("SMACKMIXIN!!");
         stack.damage(1, attacker, (e) -> {
             e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND);
         });
         if(attacker instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) attacker;
-            System.out.println("PLAYER ENTITY!!" + player);
             ArmorItem helmet = ((ArmorItem)player.getInventory().getArmorStack(2).getItem());
-            System.out.println("ARMOR" + helmet);
             if(helmet.getMaterial() == ModArmorMaterials.abyssal || helmet.toString().equals("necklace"))
             {
-                System.out.println("BONE!!!");
                 player.getInventory().damageArmor(DamageSource.MAGIC, 1f, new int[]{0, 1, 2, 3});
                 target.addStatusEffect(new StatusEffectInstance(ModEffects.TAINTED, 100, 0), attacker);
                 return true;

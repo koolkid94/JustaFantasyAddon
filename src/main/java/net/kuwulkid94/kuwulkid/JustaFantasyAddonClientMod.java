@@ -27,7 +27,7 @@ public class JustaFantasyAddonClientMod implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.SCORPION, ScorpionRenderer::new);
         EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
         EntityRendererRegistry.register(ModEntities.NAUTILUS, NautilusRenderer::new);
-        //EntityRendererRegistry.register(ModEntities.SHAMAN, ShamanRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SHAMAN, ShamanRenderer::new);
         EntityRendererRegistry.register(ModEntities.TAINTED_ENDERMAN, TaintedEndermanRenderer::new);
         //GeoItemRenderer.registerItemRenderer(ModItems.SPIKED_SHIELD, new SpikedShieldRenderer());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SANDSTONE_FIRE_BOWL, RenderLayer.getCutout());
