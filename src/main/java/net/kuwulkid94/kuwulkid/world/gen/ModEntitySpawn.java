@@ -37,7 +37,7 @@ public class ModEntitySpawn {
         SpawnRestriction.register(ModEntities.SCORPION, SpawnRestriction.Location.ON_GROUND,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);
 
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN),
+        /*BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN),
                 SpawnGroup.WATER_CREATURE, ModEntities.SHRIMP, 3, 2, 3);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.BEACH),
@@ -47,7 +47,8 @@ public class ModEntitySpawn {
                 SpawnGroup.WATER_CREATURE, ModEntities.SHRIMP, 1, 1, 3);
 
         SpawnRestriction.register(ModEntities.SHRIMP, SpawnRestriction.Location.IN_WATER,
-                Heightmap.Type.OCEAN_FLOOR, WaterCreatureEntity::canSpawn);
+                Heightmap.Type.OCEAN_FLOOR, WaterCreatureEntity::canSpawn); */
+        //commented out bc shrimp ai is underdeveloped & poor animations
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN),
                 SpawnGroup.WATER_CREATURE, ModEntities.NAUTILUS, 2, 2, 3);
