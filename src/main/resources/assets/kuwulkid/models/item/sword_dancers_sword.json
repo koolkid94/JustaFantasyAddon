@@ -2,44 +2,32 @@
 	"credit": "Made with Blockbench",
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "kuwulkid:item/sword_dancers_sword"
+		"layer0": "kuwulkid:item/sword_dancers_sword_item"
 	},
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [0, -90, 55],
-			"translation": [0, 2.5, 0.5],
-			"scale": [2.5, 2.5, 1]
+			"rotation": [-30.5, -90, 0],
+			"translation": [0, -1.5, 0.5],
+			"scale": [1.1, 1.1, 1.1]
 		},
 		"thirdperson_lefthand": {
-			"rotation": [-122, -90, 0],
-			"translation": [0, -6.25, 0.5],
-			"scale": [2, 2, 1]
+			"rotation": [-150.25, -90, 0],
+			"translation": [0, -2.5, 0]
 		},
 		"firstperson_righthand": {
-			"rotation": [0, -90, 55],
-			"translation": [0, 2.5, 0.5],
-			"scale": [2, 2, 1]
+			"rotation": [-40, -90, 0],
+			"translation": [0.5, 0, 2]
 		},
 		"firstperson_lefthand": {
-			"rotation": [-122, -90, 0],
-			"translation": [0, -6.25, 0.5],
-			"scale": [2, 2, 1]
+			"rotation": [-140, -90, 0],
+			"translation": [0, 0, 1.5]
 		},
 		"ground": {
-			"translation": [1.5, 2, 0],
-			"scale": [0.75, 0.75, 0.75]
-		},
-		"gui": {
-			"translation": [1.75, 2.75, 0],
-			"scale": [1.25, 1.25, 1]
+			"translation": [0, 0.75, 0],
+			"scale": [0.5, 0.5, 0.5]
 		},
 		"head": {
-			"translation": [2, 6.25, 0],
-			"scale": [1.1, 1.1, 1]
-		},
-		"fixed": {
-			"translation": [1.75, 1.75, 0],
-			"scale": [1.25, 1.25, 1]
+			"scale": [1.1, 1.1, 1.1]
 		}
 	}
 }

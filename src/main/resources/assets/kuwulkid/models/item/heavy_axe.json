@@ -1,43 +1,33 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "item/handheld",
+	"parent": "item/generated",
 	"textures": {
 		"layer0": "kuwulkid:item/heavy_axe"
 	},
 	"display": {
 		"thirdperson_righthand": {
-			"rotation": [57.5, 90, 0],
-			"translation": [0, 6.25, 3.75],
-			"scale": [2.5, 2.5, 1]
+			"rotation": [60.5, 90, 0],
+			"translation": [0, 4.5, 2.75]
 		},
 		"thirdperson_lefthand": {
 			"rotation": [-30.5, 90, 0],
-			"translation": [0, 6.25, 3.75],
-			"scale": [2, 2, 1]
+			"translation": [0, 4.5, 2.75]
 		},
 		"firstperson_righthand": {
-			"rotation": [57.5, 90, 0],
-			"translation": [0, 6.25, 3.75],
-			"scale": [2, 2, 1]
+			"rotation": [30.5, 90, 0],
+			"translation": [0, 6.25, 3.75]
 		},
 		"firstperson_lefthand": {
 			"rotation": [-30.5, 90, 0],
-			"translation": [0, 6.25, 3.75],
-			"scale": [2, 2, 1]
+			"translation": [0, 6.25, 3.75]
 		},
 		"ground": {
-			"translation": [0, -0.5, 0],
-			"scale": [0.75, 0.75, 0.75]
-		},
-		"gui": {
-			"scale": [2, 2, 1]
+			"translation": [0, 0.75, 0],
+			"scale": [0.5, 0.5, 0.5]
 		},
 		"head": {
 			"translation": [0, 3, 0],
 			"scale": [1.25, 1.25, 1]
-		},
-		"fixed": {
-			"scale": [2, 2, 1]
 		}
 	}
 }
