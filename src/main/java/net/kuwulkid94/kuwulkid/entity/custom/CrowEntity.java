@@ -57,6 +57,7 @@ public class CrowEntity extends AnimalEntity implements Flutterer, IAnimatable {
     private float flapSpeed = 1.0F;
     private float field_28640 = 1.0F;
 
+    //no clue if these goals even do anything lol
     int output, numOne = 0, numTwo = 4;
     private AnimationFactory factory = new AnimationFactory (this);
     public CrowEntity(EntityType<? extends CrowEntity> entityType, World world) {
@@ -91,14 +92,15 @@ public class CrowEntity extends AnimalEntity implements Flutterer, IAnimatable {
         });
         this.goalSelector.add(0, new EscapeDangerGoal(this, 1.25));
         this.goalSelector.add(0, new SwimGoal(this));
+        this.goalSelector.add(0, new EatBeetrootCropGoal(this));
         this.goalSelector.add(1, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(2, new TemptGoal(this, 1.2, BREEDING_INGREDIENT, false));
-        this.goalSelector.add(2, new EatCarrotCropGoal(this));
         this.goalSelector.add(3, new WanderAroundFarGoal(this, 1.0));
         this.goalSelector.add(4, new FlyOntoTreeGoal(this, 1.3));
-        this.goalSelector.add(5, new FollowMobGoal(this, 1.25, 3.0F, 20.0F));
+        //this.goalSelector.add(5, new FollowMobGoal(this, 1.25, 3.0F, 20.0F));
+        //removed because all crows in an area would fly to it
         this.goalSelector.add(6, new LookAroundGoal(this));
-        this.goalSelector.add(7, new GoToVillageGoal(32, 400));
+        this.goalSelector.add(7, new GoToVillageGoal(32, 1000));
 
     }
 
@@ -367,12 +369,12 @@ public class CrowEntity extends AnimalEntity implements Flutterer, IAnimatable {
         nbt.putInt("MoreCarrotTicks", this.moreCarrotTicks);
     }
 
-    static class EatCarrotCropGoal extends MoveToTargetPosGoal {
+    static class EatBeetrootCropGoal extends MoveToTargetPosGoal {
         private final CrowEntity crow;
         private boolean wantsCarrots;
         private boolean hasTarget;
 
-        public EatCarrotCropGoal(CrowEntity crow) {
+        public EatBeetrootCropGoal(CrowEntity crow) {
             super(crow, 0.699999988079071, 16);
             this.crow = crow;
         }
