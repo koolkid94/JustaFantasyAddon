@@ -13,6 +13,10 @@ import net.kuwulkid94.kuwulkid.entity.client.armor.BoneArmorRenderer;
 import net.kuwulkid94.kuwulkid.entity.client.armor.NecklaceArmorRenderer;
 import net.kuwulkid94.kuwulkid.entity.client.armor.VanguardArmorRenderer;
 import net.kuwulkid94.kuwulkid.item.ModItems;
+import net.kuwulkid94.kuwulkid.screen.CrudeAltarScreen;
+import net.kuwulkid94.kuwulkid.screen.ModScreenHandler;
+import net.minecraft.client.gui.screen.ingame.HandledScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.util.Identifier;
@@ -33,9 +37,11 @@ public class JustaFantasyAddonClientMod implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SANDSTONE_FIRE_BOWL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RED_SANDSTONE_FIRE_BOWL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.STONE_FIRE_BOWL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRUDE_ALTAR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.BEACH_FERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUSH_BRUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GEYSER, RenderLayer.getCutout());
+        HandledScreens.register(ModScreenHandler.CRUDE_ALTAR_SCREEN_HANDLER, CrudeAltarScreen::new);
         GeoArmorRenderer.registerArmorRenderer(new BoneArmorRenderer(), ModItems.SKULL_MASK);
         GeoArmorRenderer.registerArmorRenderer(new NecklaceArmorRenderer(), ModItems.NECKLACE);
 

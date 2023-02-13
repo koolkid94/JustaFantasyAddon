@@ -36,6 +36,9 @@ public class ModBlocks {
     public static final Block TROPICAL_FLOWER = registerBlock("tropical_flower",
             new TropicalFlower(FabricBlockSettings.of(Material.PLANT).nonOpaque().sounds(BlockSoundGroup.GRASS).collidable(false)), ItemGroup.DECORATIONS);
 
+    public static final Block CRUDE_ALTAR = registerBlock("crude_altar",
+            new CrudeAltar(FabricBlockSettings.of(Material.STONE).luminance(1).strength(0.5f).requiresTool().nonOpaque().ticksRandomly()), ItemGroup.BUILDING_BLOCKS);
+
     private static Block registerBlockWithoutBlockItem(String name, Block block, ItemGroup group) {
         return Registry.register(Registry.BLOCK, new Identifier(JustaFantasyAddon.MOD_ID, name), block);
     }
