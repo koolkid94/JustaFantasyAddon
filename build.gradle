@@ -35,7 +35,8 @@ dependencies {
 	//Reach Library
 	//modImplementation 'com.jamieswhiteshirt:reach-entity-attributes:2.2.0'
 
-	//Shield Library (REMOVED)
+	//Shield Library (ON HOLD)
+	//https://www.curseforge.com/minecraft/mc-mods/fabric-shield-lib
 
 }
 
