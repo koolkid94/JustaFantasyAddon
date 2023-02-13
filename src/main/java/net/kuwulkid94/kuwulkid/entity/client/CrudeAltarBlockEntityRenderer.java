@@ -1,8 +1,8 @@
 package net.kuwulkid94.kuwulkid.entity.client;
 
 import net.kuwulkid94.kuwulkid.blocks.custom.CrudeAltar;
-import net.minecraft.client.MinecraftClient;
 import net.kuwulkid94.kuwulkid.blocks.entity.CrudeAltarBlockEntity;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexConsumerProvider;
@@ -15,7 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
-import net.minecraft.world.LightType;
 
 public class CrudeAltarBlockEntityRenderer implements BlockEntityRenderer<CrudeAltarBlockEntity> {
     public CrudeAltarBlockEntityRenderer(BlockEntityRendererFactory.Context context){

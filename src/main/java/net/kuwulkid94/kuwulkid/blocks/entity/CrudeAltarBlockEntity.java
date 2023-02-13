@@ -3,8 +3,6 @@ package net.kuwulkid94.kuwulkid.blocks.entity;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.kuwulkid94.kuwulkid.JustaFantasyAddon;
-import net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod;
 import net.kuwulkid94.kuwulkid.item.ModItems;
 import net.kuwulkid94.kuwulkid.screen.CrudeAltarScreenHandler;
 import net.minecraft.block.BlockState;
@@ -27,9 +25,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.kuwulkid94.kuwulkid.networking.ModMessages;
-import static net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod.ITEM_SYNC;
 import org.jetbrains.annotations.Nullable;
+
+import static net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod.ITEM_SYNC;
 
 public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory =

@@ -15,7 +15,6 @@ import net.kuwulkid94.kuwulkid.entity.client.armor.VanguardArmorRenderer;
 import net.kuwulkid94.kuwulkid.item.ModItems;
 import net.kuwulkid94.kuwulkid.screen.CrudeAltarScreen;
 import net.kuwulkid94.kuwulkid.screen.ModScreenHandler;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
