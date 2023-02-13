@@ -24,6 +24,8 @@ import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 public class JustaFantasyAddonClientMod implements ClientModInitializer {
     public static final Identifier PacketID = new Identifier(JustaFantasyAddon.MOD_ID, "spawn_packet");
+    public static final Identifier  ITEM_SYNC = new Identifier(JustaFantasyAddon.MOD_ID, "item_sync");
+    //server to client packet
 
     @Override
     public void onInitializeClient() {
@@ -42,6 +44,7 @@ public class JustaFantasyAddonClientMod implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.LUSH_BRUSH, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GEYSER, RenderLayer.getCutout());
         HandledScreens.register(ModScreenHandler.CRUDE_ALTAR_SCREEN_HANDLER, CrudeAltarScreen::new);
+        BlockEntityRendererRegistry.register(ModBlockEntities.CRUDE_ALTAR, CrudeAltarBlockEntityRenderer::new);
         GeoArmorRenderer.registerArmorRenderer(new BoneArmorRenderer(), ModItems.SKULL_MASK);
         GeoArmorRenderer.registerArmorRenderer(new NecklaceArmorRenderer(), ModItems.NECKLACE);
 

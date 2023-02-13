@@ -1,5 +1,10 @@
 package net.kuwulkid94.kuwulkid.blocks.entity;
 
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.kuwulkid94.kuwulkid.JustaFantasyAddon;
+import net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod;
 import net.kuwulkid94.kuwulkid.item.ModItems;
 import net.kuwulkid94.kuwulkid.screen.CrudeAltarScreenHandler;
 import net.minecraft.block.BlockState;
@@ -12,13 +17,18 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.kuwulkid94.kuwulkid.networking.ModMessages;
+import static net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod.ITEM_SYNC;
 import org.jetbrains.annotations.Nullable;
 
 public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
@@ -106,6 +116,24 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
         }
     }
 
+    @Override
+    public void markDirty() {
+        if(!world.isClient()) {
+            PacketByteBuf data = PacketByteBufs.create();
+            data.writeInt(inventory.size());
+            for(int i = 0; i < inventory.size(); i++) {
+                data.writeItemStack(inventory.get(i));
+            }
+            data.writeBlockPos(getPos());
+
+            for (ServerPlayerEntity player : PlayerLookup.tracking((ServerWorld) world, getPos())) {
+                ServerPlayNetworking.send(player, ITEM_SYNC, data);
+            }
+        }
+
+        super.markDirty();
+    }
+
     private static boolean hasRecipe(CrudeAltarBlockEntity entity){
         SimpleInventory inventory = new SimpleInventory(entity.size());
         for (int i = 0; i < entity.size(); i++) {
@@ -141,4 +169,17 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
         entity.resetProgress();
     }
 
+    public ItemStack getRenderStack() {
+        if(this.getStack(2).isEmpty()){
+            return this.getStack(1);
+        } else {
+            return this.getStack(2);
+        }
+    }
+
+    public void setInventory(DefaultedList<ItemStack> inventory) {
+        for (int i = 0; i < inventory.size(); i++) {
+            this.inventory.set(i, inventory.get(i));
+        }
+    }
 }

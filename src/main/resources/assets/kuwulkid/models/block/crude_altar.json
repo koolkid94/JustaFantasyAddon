@@ -1,9 +1,8 @@
 {
 	"credit": "Made with Blockbench",
-	"texture_size": [64, 64],
 	"textures": {
 		"0": "kuwulkid:block/crude_altar",
-		"particle": "minecraft:block/cobblestone"
+		"particle": "block/cobblestone"
 	},
 	"elements": [
 		{
@@ -139,6 +138,36 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [61.3, -40.98, -5.23],
+			"translation": [0, 0.75, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [61.3, -40.98, -5.23],
+			"translation": [0, 0.75, 0],
+			"scale": [0.35, 0.35, 0.35]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.2, 0.2, 0.2]
+		},
+		"gui": {
+			"rotation": [35.48, 52.65, -8.26],
+			"translation": [0, 0.5, 0],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"fixed": {
+			"translation": [0, 0, 0.75],
+			"scale": [0.5, 0.5, 0.5]
+		}
+	},
 	"groups": [
 		{
 			"name": "VoxelShapes",
