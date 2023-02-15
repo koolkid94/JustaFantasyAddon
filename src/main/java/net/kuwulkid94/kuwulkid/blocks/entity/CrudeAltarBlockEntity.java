@@ -80,16 +80,16 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
         nbt.putInt("crude_altar.progress", progress);
+        super.writeNbt(nbt);
     }
 
     @Override
     public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
         Inventories.readNbt(nbt,inventory);
         progress = nbt.getInt("crude_altar.progress");
+        super.readNbt(nbt);
     }
 
     private void resetProgress() {
@@ -103,6 +103,7 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
 
 
         if(hasRecipe(entity)) {
+            entity.getRenderStack();
             entity.progress++;
             markDirty(world, blockPos, state);
             if(entity.progress >= entity.maxProgress) {

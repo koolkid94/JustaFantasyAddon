@@ -26,8 +26,8 @@ public class CrudeAltarBlockEntityRenderer implements BlockEntityRenderer<CrudeA
 
         ItemStack itemStack = entity.getRenderStack();
         matrices.push();
-        matrices.translate(0.45f, 0.9f, 0.5f);
-        matrices.scale(0.3f,0.3f,0.3f);
+        matrices.translate(0.45f, 0.88f, 0.55f);
+        matrices.scale(0.4f,0.4f,0.4f);
         matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-90));
 
         switch (entity.getCachedState().get(CrudeAltar.FACING)) {
