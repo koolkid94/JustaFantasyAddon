@@ -1,5 +1,6 @@
+//hi
 package net.kuwulkid94.kuwulkid;
-
+//hi
 import net.fabricmc.api.ModInitializer;
 import net.kuwulkid94.kuwulkid.blocks.ModBlocks;
 import net.kuwulkid94.kuwulkid.blocks.entity.ModBlockEntities;

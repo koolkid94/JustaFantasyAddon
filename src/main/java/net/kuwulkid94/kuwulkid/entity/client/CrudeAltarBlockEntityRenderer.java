@@ -23,6 +23,8 @@ public class CrudeAltarBlockEntityRenderer implements BlockEntityRenderer<CrudeA
     @Override
     public void render(CrudeAltarBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
+        //entity.getRenderStack();
+        //here
 
         ItemStack itemStack = entity.getRenderStack();
         matrices.push();
@@ -40,6 +42,7 @@ public class CrudeAltarBlockEntityRenderer implements BlockEntityRenderer<CrudeA
         itemRenderer.renderItem(itemStack, ModelTransformation.Mode.GUI, getLightLevel(entity.getWorld(), entity.getPos()),
                 OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, 1);
         matrices.pop();
+
     }
 
     private int getLightLevel(World world, BlockPos pos) {

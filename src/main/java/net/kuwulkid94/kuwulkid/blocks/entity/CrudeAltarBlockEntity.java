@@ -57,7 +57,7 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
             }
 
             public int size() {
-                return 4;
+                return 2;
             }
         };
     }
@@ -71,6 +71,7 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
     public Text getDisplayName() {
         return Text.literal("Scroll Altar");
     }
+    //yes it is a literal mald abt it
 
     @Nullable
     @Override
@@ -169,7 +170,7 @@ public class CrudeAltarBlockEntity extends BlockEntity implements NamedScreenHan
     }
 
     public ItemStack getRenderStack() {
-        if(this.getStack(2).isEmpty()){
+        if(this.getStack(2).isEmpty()) {
             return this.getStack(1);
         } else {
             return this.getStack(2);
