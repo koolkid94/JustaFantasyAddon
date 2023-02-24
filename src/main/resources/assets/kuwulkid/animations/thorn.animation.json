@@ -1,0 +1,74 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.thorn.attack": {
+			"animation_length": 2.25,
+			"bones": {
+				"bone": {
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.25": {
+							"vector": [1.08, 1.05, 1],
+							"easing": "easeInCubic"
+						},
+						"0.5417": {
+							"vector": [1, 1, 1],
+							"easing": "easeInCubic"
+						},
+						"0.8333": {
+							"vector": [1.08, 1.05, 1],
+							"easing": "easeInCubic"
+						},
+						"1.125": {
+							"vector": [1, 1, 1]
+						},
+						"1.375": {
+							"vector": [1.08, 1.05, 1],
+							"easing": "easeInCubic"
+						},
+						"1.6667": {
+							"vector": [1, 1, 1],
+							"easing": "easeInCubic"
+						},
+						"1.9583": {
+							"vector": [1.08, 1.05, 1],
+							"easing": "easeInCubic"
+						},
+						"2.25": {
+							"vector": [1, 1, 1],
+							"easing": "easeInCubic"
+						}
+					}
+				}
+			}
+		},
+		"animation.thorn.spawn": {
+			"animation_length": 0.75,
+			"bones": {
+				"bone": {
+					"scale": {
+						"0.0": [1, 1, 1],
+						"0.75": [1, 2.8, 1]
+					}
+				}
+			}
+		},
+		"animation.thorn.death": {
+			"animation_length": 0.5,
+			"bones": {
+				"bone": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.5": [0, -85, 0]
+					},
+					"scale": {
+						"0.0": [1.4, 1, 1],
+						"0.2083": [9, 1, 1]
+					}
+				}
+			}
+		}
+	}
+}

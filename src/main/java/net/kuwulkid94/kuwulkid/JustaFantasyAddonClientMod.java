@@ -24,11 +24,13 @@ import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 public class JustaFantasyAddonClientMod implements ClientModInitializer {
     public static final Identifier PacketID = new Identifier(JustaFantasyAddon.MOD_ID, "spawn_packet");
     public static final Identifier  ITEM_SYNC = new Identifier(JustaFantasyAddon.MOD_ID, "item_sync");
+
     //server to client packet
 
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.CROW, CrowRenderer::new);
+        EntityRendererRegistry.register(ModEntities.THORN, ThornRenderer::new);
         EntityRendererRegistry.register(ModEntities.SCORPION, ScorpionRenderer::new);
         EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
         EntityRendererRegistry.register(ModEntities.NAUTILUS, NautilusRenderer::new);

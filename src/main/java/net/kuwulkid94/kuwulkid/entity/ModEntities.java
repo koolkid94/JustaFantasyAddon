@@ -17,6 +17,12 @@ public class ModEntities {
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, CrowEntity::new)
                     .dimensions(EntityDimensions.fixed(0.5f,1.00f)).build());
 
+
+    public static final EntityType<ThornEntity> THORN = Registry.register(
+            Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "thorn"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, ThornEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.5f,1.00f)).build());
+
     public static final EntityType<ScorpionEntity> SCORPION = Registry.register(
             Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "scorpion"),
             FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, ScorpionEntity::new)
@@ -59,5 +65,6 @@ public class ModEntities {
                     .trackRangeBlocks(4).trackedUpdateRate(10) // necessary for all thrown projectiles (as it prevents it from breaking, lol)
                     .build()
     ); // VERY IMPORTANT DONT DELETE FOR THE LOVE OF GOD PSLSSSSSS
+    //actually i dont think this does anything lol...
     //tysm fabric modding wiki <3
 }
