@@ -132,16 +132,16 @@ public class CrowEntity extends AnimalEntity implements Flutterer, IAnimatable {
                 0, this::predicate));
     }
 
-    private static final Ingredient BREEDING_INGREDIENT;
-    static {
-        BREEDING_INGREDIENT = Ingredient.ofItems(new ItemConvertible[]{Items.BEETROOT_SEEDS, Items.ROTTEN_FLESH});
-    }
+
 
     @Override
     public AnimationFactory getFactory() {
         return factory;
     }
-
+    private static final Ingredient BREEDING_INGREDIENT;
+    static {
+        BREEDING_INGREDIENT = Ingredient.ofItems(new ItemConvertible[]{Items.BEETROOT_SEEDS, Items.ROTTEN_FLESH});
+    }
     @Override
     protected SoundEvent getAmbientSound() {
         output = (int) ((numTwo - numOne + 1) * Math.random() + numOne);
