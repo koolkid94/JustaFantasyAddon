@@ -8,13 +8,20 @@ import net.minecraft.util.registry.Registry;
 
 public class ModEffects {
     public static StatusEffect TAINTED;
+    public static StatusEffect ENSNARED;
 
     public static StatusEffect registerStatusEffect(String name){
         return Registry.register(Registry.STATUS_EFFECT, new Identifier(JustaFantasyAddon.MOD_ID, name),
                 new TaintedEffect(StatusEffectCategory.HARMFUL, 14577094));
     }
 
+    public static StatusEffect registerStatusEffect2(String name){
+        return Registry.register(Registry.STATUS_EFFECT, new Identifier(JustaFantasyAddon.MOD_ID, name),
+                new EnsnaredEffect(StatusEffectCategory.HARMFUL, 11536094));
+    }
+
     public static void registerEffects() {
        TAINTED = registerStatusEffect("tainted");
+       ENSNARED = registerStatusEffect2("ensnared");
     }
 }
