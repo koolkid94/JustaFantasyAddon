@@ -30,7 +30,7 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	//Geckolib
-	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.19:3.1.18'
+	modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:${project.geckolib_version_fabric}"
 
 	//Reach Library
 	//modImplementation 'com.jamieswhiteshirt:reach-entity-attributes:2.2.0'
