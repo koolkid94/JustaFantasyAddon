@@ -24,7 +24,7 @@
   "item.kuwulkid.scorpion_fang": "Scorpion Fang",
   "item.kuwulkid.scorpion_bag": "Scorpion Sand Bag",
   "item.kuwulkid.oil_jar": "Oil Jar",
-  "item.kuwulkid.nautilus_bucket": "Nautilus Bucket",
+  "item.kuwulkid.nautilus_bucket": "Bucket of Nautilus",
   "item.kuwulkid.abyssal_necklace": "Abyssal Necklace",
 
   "item.kuwulkid.vanguard_helmet": "Vanguard Helmet",
@@ -43,6 +43,7 @@
   "item.kuwulkid.sword_rapier": "Rapier",
   "item.kuwulkid.tainted_halberd": "Tainted Halberd",
   "item.kuwulkid.guardian_laser": "Guardian Laser",
+  "item.kuwulkid.jungle_axe": "Jungle Axe",
 
   "item.minecraft.potion.effect.potent_poison": "Potion of Poison",
   "item.minecraft.splash_potion.effect.potent_poison": "Splash Potion of Poison",
@@ -50,6 +51,7 @@
   "item.minecraft.tipped_arrow.effect.potent_poison": "Arrow of Poison",
 
   "effect.kuwulkid.tainted": "Tainted",
+  "effect.kuwulkid.ensnared": "Ensnared",
 
   "entity.kuwulkid.scorpion": "Scorpion",
   "entity.kuwulkid.crow": "Crow",
@@ -57,6 +59,7 @@
   "entity.kuwulkid.shaman": "Shaman",
   "entity.kuwulkid.nautilus": "Nautilus",
   "entity.kuwulkid.tainted_enderman": "Tainted Enderman",
+  "entity.kuwulkid.thorn": "Thorn",
 
   "block.kuwulkid.geyser": "Oil Vein",
   "block.kuwulkid.tropical_flower": "Flower of the Jungle",

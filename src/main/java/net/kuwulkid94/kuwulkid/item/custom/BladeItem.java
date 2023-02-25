@@ -37,4 +37,3 @@ public class BladeItem extends SwordItem {
     }
 
 }
-//print statements for debugging

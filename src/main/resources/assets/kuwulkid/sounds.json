@@ -8,28 +8,28 @@
   },
   "crow_idle_0": {
     "category": "entity",
-    "subtitle": "kuwulkid.crow_idle_0",
+    "subtitle": "kuwulkid.crow_idle",
     "sounds": [
       "kuwulkid:crow_idle_0"
     ]
   },
   "crow_idle_1": {
     "category": "entity",
-    "subtitle": "kuwulkid.crow_idle_1",
+    "subtitle": "kuwulkid.crow_idle",
     "sounds": [
       "kuwulkid:crow_idle_1"
     ]
   },
   "crow_idle_2": {
     "category": "entity",
-    "subtitle": "kuwulkid.crow_idle_2",
+    "subtitle": "kuwulkid.crow_idle",
     "sounds": [
       "kuwulkid:crow_idle_2"
     ]
   },
   "crow_idle_3": {
     "category": "entity",
-    "subtitle": "kuwulkid.crow_idle_3",
+    "subtitle": "kuwulkid.crow_idle",
     "sounds": [
       "kuwulkid:crow_idle_3"
     ]
@@ -92,16 +92,64 @@
   },
   "firebowl_woosh_1": {
     "category": "block",
-    "subtitle": "kuwulkid.firebowl_woosh_1",
+    "subtitle": "kuwulkid.firebowl_woosh",
     "sounds": [
       "kuwulkid:firebowl_woosh_1"
     ]
   },
   "firebowl_woosh_2": {
     "category": "block",
-    "subtitle": "kuwulkid.firebowl_woosh_2",
+    "subtitle": "kuwulkid.firebowl_woosh",
     "sounds": [
       "kuwulkid:firebowl_woosh_2"
+    ]
+  },
+
+  "uproot": {
+    "category": "entity",
+    "subtitle": "kuwulkid.thorn",
+    "sounds": [
+      "kuwulkid:uproot"
+    ]
+  },
+
+  "uproot2": {
+    "category": "entity",
+    "subtitle": "kuwulkid.thorn",
+    "sounds": [
+      "kuwulkid:uproot2"
+    ]
+  },
+
+  "uproot3": {
+    "category": "entity",
+    "subtitle": "kuwulkid.thorn",
+    "sounds": [
+      "kuwulkid:uproot3"
+    ]
+  },
+
+  "thorn1": {
+    "category": "entity",
+    "subtitle": "kuwulkid.thorn",
+    "sounds": [
+      "kuwulkid:thorn1"
+    ]
+  },
+
+  "thorn2_1": {
+    "category": "entity",
+    "subtitle": "kuwulkid.thorn",
+    "sounds": [
+      "kuwulkid:thorn2_1"
+    ]
+  },
+
+  "thorn3_1": {
+    "category": "entity",
+    "subtitle": "kuwulkid.thorn",
+    "sounds": [
+      "kuwulkid:thorn3_1"
     ]
   }
 }

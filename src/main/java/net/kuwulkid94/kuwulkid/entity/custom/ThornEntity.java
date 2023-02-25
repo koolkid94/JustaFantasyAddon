@@ -1,5 +1,6 @@
 package net.kuwulkid94.kuwulkid.entity.custom;
 
+import net.kuwulkid94.kuwulkid.effect.ModEffects;
 import net.kuwulkid94.kuwulkid.sounds.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
@@ -53,10 +54,10 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
     private static TrackedData<Integer> SPAWN_TIMER = null;
     private static final TrackedData<Integer> ANIMATION;
     private final AnimationBuilder DEATH_ANIMATION = new AnimationBuilder().addAnimation("animation.thorn.death", ILoopType.EDefaultLoopTypes.HOLD_ON_LAST_FRAME);
-    private final AnimationBuilder SPAWN_ANIMATION = new AnimationBuilder().addAnimation("animation.thorn.spawn", ILoopType.EDefaultLoopTypes.PLAY_ONCE);
+    private final AnimationBuilder SPAWN_ANIMATION = new AnimationBuilder().addAnimation("animation.thorn.spawn", ILoopType.EDefaultLoopTypes.HOLD_ON_LAST_FRAME);
     private final AnimationBuilder ATTACK_ANIMATION = new AnimationBuilder().addAnimation("animation.thorn.attack", ILoopType.EDefaultLoopTypes.LOOP);
 
-    int output, numOne = 0, numTwo = 4;
+    int output, numOne = 0, numTwo = 2;
     private AnimationFactory factory = GeckoLibUtil.createFactory(this);
     public ThornEntity(EntityType<? extends ThornEntity> entityType, World world) {
         super(entityType, world);
@@ -89,7 +90,7 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
             event.getController().setAnimation(SPAWN_ANIMATION);
             return PlayState.CONTINUE;
         }
-        if (this.isDead() || this.getHealth() < 0.01) {
+        else if (this.isDead() || this.getHealth() < 0.1) {
             event.getController().setAnimation(DEATH_ANIMATION);
             return PlayState.CONTINUE;
         }
@@ -114,22 +115,29 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
     @Override
     protected SoundEvent getAmbientSound() {
         output = (int) ((numTwo - numOne + 1) * Math.random() + numOne);
-       return ModSounds.CROW_IDLE;
+        if(output == 0)
+            return ModSounds.THORN;
+        if(output == 1)
+            return ModSounds.THORN_1;
+        else
+            return ModSounds.THORN_0;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.CROW_HURT;
+        if(output == 1)
+            return ModSounds.UPROOT;
+        else
+            return ModSounds.UPROOT_1;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.CROW_DEATH;
-    }
-
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEvents.ENTITY_CHICKEN_STEP, 0.15f, 1.0f);
+        output = (int) ((numTwo - numOne + 1) * Math.random() + numOne);
+        if(output == 1)
+            return ModSounds.UPROOT_0;
+        else
+            return ModSounds.UPROOT;
     }
 
     @Override
@@ -212,7 +220,10 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
             Iterator var15 = list.iterator();
             while (var15.hasNext()) {
                 LivingEntity livingEntity = (LivingEntity) var15.next();
-                this.damage(livingEntity, this);
+                this.addEffect(livingEntity,this);
+                if(ticksLeft % 30 == 0) {
+                    this.damage(livingEntity, this);
+                }
             }
         }
         if(ticksLeft <= 0)
@@ -225,10 +236,10 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
 
     private void damage(LivingEntity target, ThornEntity thorny) {
         LivingEntity livingEntity = this.getOwner();
-        if (target.isAlive() && !target.isInvulnerable() && target != thorny) {
+        if (target.isAlive() && !target.isInvulnerable() && target != thorny ) {
             if (livingEntity == null) {
                 target.damage(DamageSource.MAGIC, 2.0F);
-                target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 40, 2), livingEntity);
+                //target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 1, 1), livingEntity);
             } else {
                 if (livingEntity.isTeammate(target)) {
                     return;
@@ -238,6 +249,23 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
             }
 
         }
+    }
+
+    private void addEffect(LivingEntity target, ThornEntity thorny){
+        LivingEntity livingEntity = this.getOwner();
+        if (target.isAlive() && !target.isInvulnerable() && target != thorny ) {
+            if (livingEntity == null) {
+                target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 2, 1), livingEntity);
+            } else {
+                if (livingEntity.isTeammate(target)) {
+                    return;
+                }
+
+                target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 2, 1), livingEntity);
+            }
+
+        }
+
     }
 
     public void setOwner(@Nullable LivingEntity owner) {

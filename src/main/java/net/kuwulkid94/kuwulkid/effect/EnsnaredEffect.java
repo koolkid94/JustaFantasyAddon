@@ -3,6 +3,9 @@ package net.kuwulkid94.kuwulkid.effect;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.util.math.Vec3d;
 
 public class EnsnaredEffect extends StatusEffect {
     public EnsnaredEffect(StatusEffectCategory statusEffectCategory, int color) {
@@ -11,17 +14,8 @@ public class EnsnaredEffect extends StatusEffect {
     boolean damaged = false;
 
     public void applyUpdateEffect(LivingEntity pLivingEntity, int pAmplifier) {
-        if (!pLivingEntity.world.isClient()) {
-            double x = pLivingEntity.getX();
-            double y = pLivingEntity.getY();
-            double z = pLivingEntity.getZ();
-
-            //LivingEntity.teleport(x, y, z);
-            pLivingEntity.setVelocity(0, 0, 0);
-            pLivingEntity.setMovementSpeed(0);
-        }
-
-        super.applyUpdateEffect(pLivingEntity, pAmplifier);
+        pLivingEntity.slowMovement(pLivingEntity.getSteppingBlockState(), new Vec3d(0.01, 0.75, 0.01));
+        //haha only took like 19 hours haha im dumb lol
     }
 
     @Override

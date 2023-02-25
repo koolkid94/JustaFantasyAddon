@@ -8,7 +8,8 @@
     "BrewingRecipeRegistryMixin",
     "BubbleColumnBlockMixin",
     "postHitMixinSword",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "EntityNavigationMixin"
   ],
   "client": [
     "ExampleMixin"

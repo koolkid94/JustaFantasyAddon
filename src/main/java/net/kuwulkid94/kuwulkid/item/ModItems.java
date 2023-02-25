@@ -112,6 +112,8 @@ public class ModItems {
 
     //public static final Item BATTLESTAFF = registerItem("staff_battlestaff", new BladeItem(ModToolMaterials.PRIMITIVE, 8, -3.3f, new FabricItemSettings().group(ItemGroup.COMBAT)));
 
+    public static final Item JUNGLE_AXE = registerItem("jungle_axe", new JungleAxeItem(ModToolMaterials.PRIMITIVE, 8, -3.3f, new FabricItemSettings().group(ItemGroup.COMBAT)));
+
     public static final Item SUNKEN_ANCHOR = registerItem("sunken_anchor", new HeavyWeaponItem(ToolMaterials.IRON, 8, -3.3f, new FabricItemSettings().group(ItemGroup.COMBAT)));
 
     public static final Item CORAL_BLADE = registerItem("sword_coral_blade", new BladeItem(ModToolMaterials.CORAL, 3, -2.5f, new FabricItemSettings().group(ItemGroup.COMBAT)));

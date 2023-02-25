@@ -21,6 +21,12 @@ public class ModSounds {
     public static SoundEvent FIREBOWL_WOOSH = registerSoundEvent("firebowl_woosh");
     public static SoundEvent FIREBOWL_WOOSH_1 = registerSoundEvent("firebowl_woosh_1");
     public static SoundEvent FIREBOWL_WOOSH_2 = registerSoundEvent("firebowl_woosh_2");
+    public static SoundEvent UPROOT = registerSoundEvent("uproot");
+    public static SoundEvent UPROOT_0 = registerSoundEvent("uproot2");
+    public static SoundEvent UPROOT_1 = registerSoundEvent("uproot3");
+    public static SoundEvent THORN = registerSoundEvent("thorn1");
+    public static SoundEvent THORN_0 = registerSoundEvent("thorn2_1");
+    public static SoundEvent THORN_1 = registerSoundEvent("thorn3_1");
 
 
     private static SoundEvent registerSoundEvent(String name) {
