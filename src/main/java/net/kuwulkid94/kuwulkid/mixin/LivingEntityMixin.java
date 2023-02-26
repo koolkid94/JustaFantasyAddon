@@ -2,9 +2,10 @@ package net.kuwulkid94.kuwulkid.mixin;
 
 import com.google.common.collect.Maps;
 import net.kuwulkid94.kuwulkid.effect.ModEffects;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PowderSnowBlock;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
@@ -20,7 +21,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import net.minecraft.entity.attribute.EntityAttributes;
 
 import java.util.Map;
 

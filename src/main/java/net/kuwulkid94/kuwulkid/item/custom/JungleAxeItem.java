@@ -1,19 +1,13 @@
 package net.kuwulkid94.kuwulkid.item.custom;
 
 import net.kuwulkid94.kuwulkid.entity.ModEntities;
-import net.kuwulkid94.kuwulkid.entity.custom.ThornEntity;
-import net.kuwulkid94.kuwulkid.item.ModArmorMaterials;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.passive.AxolotlEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.kuwulkid94.kuwulkid.entity.ModEntities.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.server.world.ServerWorld;
 
 public class JungleAxeItem extends SwordItem {
