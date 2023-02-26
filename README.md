@@ -8,3 +8,4 @@ There is a large portion of assets and code taken directly from other projects, 
 
 Update the wiki at [justafantasyaddon](https://docs.google.com/document/d/1QUEOI7wyLSbRGBoV76DvDhQ3jyW9zptFGwz0tBGYsXA/edit#heading=h.83b19sy9jzig) for in depth explainations.
 
+![titleimage.png](src%2Fmain%2Fresources%2Fassets%2Ftitleimage.png)
