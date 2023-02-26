@@ -14,6 +14,9 @@ import net.minecraft.util.registry.Registry;
 public class ModItems {
 
     public static final Item CROW_FEATHER = registerItem("crow_feather",
+            new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)));
+
+    public static final Item SCROLL = registerItem("scroll",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
     public static final Item SPARK_POWDER = registerItem("spark_powder",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
@@ -23,10 +26,10 @@ public class ModItems {
     public static final Item OIL_RIG = registerItem("oil_rig",
             new Item(new FabricItemSettings().group(ItemGroup.MISC)));
     public static final Item SCORPION_STINGER = registerItem("scorpion_stinger",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)));
 
     public static final Item ABYSSAL_STONE = registerItem("abyssal_stone",
-            new Item(new FabricItemSettings().group(ItemGroup.MISC)));
+            new Item(new FabricItemSettings().group(ItemGroup.MATERIALS)));
     public static final Item CACTUS_FRUIT = registerItem("cactus_fruit",
             new Item(new FabricItemSettings().group(ItemGroup.FOOD).food(ModFoodComponents.CACTUS_FRUIT)));
 

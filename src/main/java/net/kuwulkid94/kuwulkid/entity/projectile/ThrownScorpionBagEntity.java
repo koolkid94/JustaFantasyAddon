@@ -2,7 +2,6 @@ package net.kuwulkid94.kuwulkid.entity.projectile;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod;
 import net.kuwulkid94.kuwulkid.entity.ModEntities;
 import net.kuwulkid94.kuwulkid.item.ModItems;
 import net.kuwulkid94.kuwulkid.sounds.ModSounds;
@@ -15,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.Packet;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -25,6 +25,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class ThrownScorpionBagEntity extends ThrownItemEntity {
+
     int numOne = 0, numTwo = 3;
 
     public ThrownScorpionBagEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
@@ -101,6 +102,17 @@ public class ThrownScorpionBagEntity extends ThrownItemEntity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, JustaFantasyAddonClientMod.PacketID);
+        /*PacketByteBuf packet = new PacketByteBuf(Unpooled.buffer());
+
+        //entity position
+        packet.writeDouble(getX());
+        packet.writeDouble(getY());
+        packet.writeDouble(getZ());
+
+        //entity id & uuid
+        packet.writeInt(this.getEntityId());
+
+        return super.createSpawnPacket(); */
+        return new EntitySpawnS2CPacket(this);
     }
 }

@@ -1,8 +1,5 @@
 package net.kuwulkid94.kuwulkid.entity.projectile;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.kuwulkid94.kuwulkid.JustaFantasyAddonClientMod;
 import net.kuwulkid94.kuwulkid.entity.ModEntities;
 import net.kuwulkid94.kuwulkid.item.ModItems;
 import net.kuwulkid94.kuwulkid.world.FireExplosion;
@@ -13,10 +10,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
-import net.minecraft.particle.ItemStackParticleEffect;
-import net.minecraft.particle.ParticleEffect;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
@@ -34,7 +29,7 @@ public class ThrownOilJarEntity extends ThrownItemEntity {
     }
 
     public ThrownOilJarEntity(World world, LivingEntity owner) {
-        super(ModEntities.SCORPION_BAG_ENTITY, owner, world); // null will be changed later
+        super(ModEntities.OIL_JAR_ENTITY, owner, world); // null will be changed later
     }
 
     @Override
@@ -42,24 +37,7 @@ public class ThrownOilJarEntity extends ThrownItemEntity {
         return ModItems.OIL_JAR;
     }
 
-    //Next 2 Methods Handle Particle Effects.
-    @Environment(EnvType.CLIENT)
-    private ParticleEffect getParticleParameters() { // Not entirely sure, but probably has do to with the thown entitie's particles. (OPTIONAL)
-        ItemStack itemStack = this.getItem();
-        return (ParticleEffect)(itemStack.isEmpty() ? ParticleTypes.FALLING_DUST : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
-    }
 
-    @Environment(EnvType.CLIENT)
-    public void handleStatus(byte status) { // Also not entirely sure, but probably also has to do with the particles. This method (as well as the previous one) are optional, so if you don't understand, don't include this one.
-        if (status == 3) {
-            ParticleEffect particleEffect = this.getParticleParameters();
-
-            for(int i = 0; i < 8; ++i) {
-                this.world.addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
-            }
-        }
-
-    }
 
     protected void onEntityHit(EntityHitResult entityHitResult) { // called on entity hit.
         super.onEntityHit(entityHitResult);
@@ -83,8 +61,8 @@ public class ThrownOilJarEntity extends ThrownItemEntity {
             world.addParticle(ParticleTypes.FLAME, (double) pos.getX() + Math.random(), (double) pos.getY() + 0.2, (double) pos.getZ() + Math.random(), Math.random() * (0.001), Math.random() * (0.2), Math.random() * (0.001));
             world.addParticle(ParticleTypes.FLAME, (double) pos.getX() + Math.random(), (double) pos.getY() + 0.2, (double) pos.getZ() + Math.random(), Math.random() * (0.001), Math.random() * (0.2), Math.random() * (0.001));
 
-            this.world.createExplosion((Entity)null, this.getX(), this.getY(), this.getZ(), (float)0.75, true, true ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.DESTROY);
-            this.world.createExplosion((Entity)null, this.getX(), this.getY(), this.getZ(), (float)0.75, true, true ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.DESTROY);
+            this.world.createExplosion((Entity)null, this.getX(), this.getY(), this.getZ(), (float)2, true, true ? Explosion.DestructionType.NONE : Explosion.DestructionType.NONE);
+            //this.world.createExplosion((Entity)null, this.getX(), this.getY(), this.getZ(), (float)0.75, true, true ? Explosion.DestructionType.DESTROY : Explosion.DestructionType.DESTROY);
             FireExplosion explosion = new FireExplosion(world, this, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1f, Explosion.DestructionType.DESTROY);
 
             for (BlockPos blockPos3 : explosion.affectedBlocks) {
@@ -102,7 +80,18 @@ public class ThrownOilJarEntity extends ThrownItemEntity {
 
     @Override
     public Packet<?> createSpawnPacket() {
-        return EntitySpawnPacket.create(this, JustaFantasyAddonClientMod.PacketID);
+        /*PacketByteBuf packet = new PacketByteBuf(Unpooled.buffer());
+
+        //entity position
+        packet.writeDouble(getX());
+        packet.writeDouble(getY());
+        packet.writeDouble(getZ());
+
+        //entity id & uuid
+        packet.writeInt(this.getEntityId());
+
+        return super.createSpawnPacket(); */
+        return new EntitySpawnS2CPacket(this);
     }
 
 

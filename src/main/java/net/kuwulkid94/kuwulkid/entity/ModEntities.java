@@ -21,7 +21,7 @@ public class ModEntities {
     public static final EntityType<ThornEntity> THORN = Registry.register(
             Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "thorn"),
             FabricEntityTypeBuilder.create(SpawnGroup.MISC, ThornEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.5f,1.00f)).build());
+                    .dimensions(EntityDimensions.fixed(0.75f,0.40f)).build());
 
     public static final EntityType<ScorpionEntity> SCORPION = Registry.register(
             Registry.ENTITY_TYPE, new Identifier(JustaFantasyAddon.MOD_ID, "scorpion"),
