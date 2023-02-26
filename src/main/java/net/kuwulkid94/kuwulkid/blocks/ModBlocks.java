@@ -28,7 +28,7 @@ public class ModBlocks {
             new BeachFern(FabricBlockSettings.of(Material.PLANT).nonOpaque().sounds(BlockSoundGroup.GRASS).collidable(false)), ItemGroup.DECORATIONS);
 
     public static final Block LUSH_BRUSH = registerBlock("lush_brush",
-            new LushBrush(FabricBlockSettings.of(Material.PLANT).nonOpaque().strength(0.5f).sounds(BlockSoundGroup.GRASS).collidable(false)), ItemGroup.DECORATIONS);
+            new LushBrush(FabricBlockSettings.of(Material.PLANT).nonOpaque().sounds(BlockSoundGroup.GRASS).collidable(false)), ItemGroup.DECORATIONS);
 
     public static final Block GEYSER = registerBlock("geyser",
             new Geyser(FabricBlockSettings.of(Material.STONE).nonOpaque().luminance(3).strength(3.75f).requiresTool().sounds(BlockSoundGroup.STONE).collidable(true).ticksRandomly()), ItemGroup.BUILDING_BLOCKS);

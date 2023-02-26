@@ -125,6 +125,7 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
+        output = (int) ((numTwo - numOne + 1) * Math.random() + numOne);
         if(output == 1)
             return ModSounds.UPROOT;
         else
@@ -226,8 +227,17 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
                 }
             }
         }
-        if(ticksLeft <= 0)
+        if(ticksLeft <= 0 || this.isDead())
         {
+            List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox().expand(0.2, 0.0, 0.2));
+            Iterator var15 = list.iterator();
+            while (var15.hasNext())
+            {
+                LivingEntity livingEntity = (LivingEntity) var15.next();
+                if(livingEntity.isAlive()) {
+                    livingEntity.removeStatusEffect(ModEffects.ENSNARED);
+                }
+            }
             this.kill();
             //this.discard();
         }
@@ -255,13 +265,13 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
         LivingEntity livingEntity = this.getOwner();
         if (target.isAlive() && !target.isInvulnerable() && target != thorny ) {
             if (livingEntity == null) {
-                target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 2, 1), livingEntity);
+                target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 240, 0), livingEntity);
             } else {
                 if (livingEntity.isTeammate(target)) {
                     return;
                 }
 
-                target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 2, 1), livingEntity);
+                target.addStatusEffect(new StatusEffectInstance(ModEffects.ENSNARED, 240, 0), livingEntity);
             }
 
         }
@@ -316,8 +326,29 @@ public class ThornEntity extends PathAwareEntity implements IAnimatable {
         this.dataTracker.set(ANIMATION, state);
     }
 
+    @Override
     public void onDeath(DamageSource damageSource) {
 
+        if (!this.isRemoved() && !this.dead) {
+            Entity entity = damageSource.getAttacker();
+            LivingEntity livingEntity = this.getPrimeAdversary();
+            if (this.scoreAmount >= 0 && livingEntity != null) {
+                livingEntity.updateKilledAdvancementCriterion(this, this.scoreAmount, damageSource);
+            }
+
+            this.dead = true;
+            this.getDamageTracker().update();
+            if (this.world instanceof ServerWorld) {
+                if (entity == null || entity.onKilledOther((ServerWorld)this.world, this)) {
+                    this.emitGameEvent(GameEvent.ENTITY_DIE);
+                    this.drop(damageSource);
+                    this.onKilledBy(livingEntity);
+                }
+
+                this.world.sendEntityStatus(this, (byte)3);
+            }
+        }
+        this.setPose(EntityPose.STANDING);
     }
 
     static {
