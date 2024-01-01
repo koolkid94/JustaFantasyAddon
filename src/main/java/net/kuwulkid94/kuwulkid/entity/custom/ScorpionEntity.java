@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.entity.custom;
+/*package net.kuwulkid94.kuwulkid.entity.custom;
 
 import net.kuwulkid94.kuwulkid.entity.ModEntities;
 import net.kuwulkid94.kuwulkid.entity.helper.Bundleable;
@@ -215,3 +215,4 @@ public class ScorpionEntity extends AnimalEntity implements Bundleable, Monster,
 
 
 }
+ */

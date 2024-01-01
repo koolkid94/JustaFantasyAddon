@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.entity.client;
+/*package net.kuwulkid94.kuwulkid.entity.client;
 
 import net.kuwulkid94.kuwulkid.entity.projectile.ThrownOilJarEntity;
 import net.kuwulkid94.kuwulkid.item.ModItems;
@@ -28,4 +28,4 @@ public class ThrownOilJarEntityRenderer extends EntityRenderer<ThrownOilJarEntit
 
         MinecraftClient.getInstance().getItemRenderer().renderItem(STACK, ModelTransformation.Mode.FIXED, light, OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, 33);
     }
-}
+}*/

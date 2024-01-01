@@ -7,7 +7,7 @@ import net.kuwulkid94.kuwulkid.blocks.ModBlocks;
 import net.kuwulkid94.kuwulkid.blocks.entity.ModBlockEntities;
 import net.kuwulkid94.kuwulkid.effect.ModEffects;
 import net.kuwulkid94.kuwulkid.item.ModItems;
-import net.kuwulkid94.kuwulkid.networking.ModMessages;
+//import net.kuwulkid94.kuwulkid.networking.ModMessages;
 import net.kuwulkid94.kuwulkid.potion.ModPotions;
 import net.kuwulkid94.kuwulkid.screen.ModScreenHandler;
 import net.kuwulkid94.kuwulkid.sounds.ModSounds;
@@ -41,6 +41,6 @@ public class JustaFantasyAddon implements ModInitializer {
 		GeckoLib.initialize();
 		ModPotions.registerPotions();
 		ModScreenHandler.registerALlScreenHandlers();
-		ModMessages.registerS2CPackets();
+		//ModMessages.registerS2CPackets();
 	}
 }

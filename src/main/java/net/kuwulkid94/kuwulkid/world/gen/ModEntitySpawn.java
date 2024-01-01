@@ -28,7 +28,7 @@ public class ModEntitySpawn {
         // SpawnRestriction.register(ModEntities.CHOMPER, SpawnRestriction.Location.ON_GROUND,
         //                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
 
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DESERT),
+       /* BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DESERT),
                 SpawnGroup.CREATURE, ModEntities.SCORPION, 15,2,5);
 
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.BADLANDS),
@@ -50,17 +50,17 @@ public class ModEntitySpawn {
                 Heightmap.Type.OCEAN_FLOOR, WaterCreatureEntity::canSpawn); */
         //commented out bc shrimp ai is underdeveloped & poor animations
 
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN),
-                SpawnGroup.WATER_CREATURE, ModEntities.NAUTILUS, 2, 2, 3);
+        //BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN),
+              //  SpawnGroup.WATER_CREATURE, ModEntities.NAUTILUS, 2, 2, 3);
 
-        SpawnRestriction.register(ModEntities.NAUTILUS, SpawnRestriction.Location.IN_WATER,
-                Heightmap.Type.OCEAN_FLOOR, WaterCreatureEntity::canSpawn);
+       // SpawnRestriction.register(ModEntities.NAUTILUS, SpawnRestriction.Location.IN_WATER,
+               // Heightmap.Type.OCEAN_FLOOR, WaterCreatureEntity::canSpawn);
 
-        SpawnRestriction.register(ModEntities.TAINTED_ENDERMAN, SpawnRestriction.Location.ON_GROUND,
-                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnIgnoreLightLevel);
+       // SpawnRestriction.register(ModEntities.TAINTED_ENDERMAN, SpawnRestriction.Location.ON_GROUND,
+               // Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnIgnoreLightLevel);
 
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.END_HIGHLANDS),
-                SpawnGroup.CREATURE, ModEntities.TAINTED_ENDERMAN, 3, 2, 4);
+     //   BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.END_HIGHLANDS),
+                //SpawnGroup.CREATURE, ModEntities.TAINTED_ENDERMAN, 3, 2, 4);
 
     }
 }

@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.entity.client;
+/*package net.kuwulkid94.kuwulkid.entity.client;
 
 import net.kuwulkid94.kuwulkid.entity.projectile.ThrownScorpionBagEntity;
 import net.minecraft.client.MinecraftClient;
@@ -30,3 +30,5 @@ public class ThrownScorpionBagEntityRenderer extends EntityRenderer<ThrownScorpi
     }
 
 }
+
+ */

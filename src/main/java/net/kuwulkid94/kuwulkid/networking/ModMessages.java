@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.networking;
+/*package net.kuwulkid94.kuwulkid.networking;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.kuwulkid94.kuwulkid.networking.packet.ItemStackSyncS2CPacket;
@@ -13,3 +13,6 @@ public class ModMessages {
         //ClientPlayNetworking.registerGlobalReceiver(PacketID, ItemStackSyncS2CPacket::receive);
     }
 }
+*\
+ */
+

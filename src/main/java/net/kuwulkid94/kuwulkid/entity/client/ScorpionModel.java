@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.entity.client;
+/*package net.kuwulkid94.kuwulkid.entity.client;
 
 import net.kuwulkid94.kuwulkid.JustaFantasyAddon;
 import net.kuwulkid94.kuwulkid.entity.custom.ScorpionEntity;
@@ -23,3 +23,4 @@ public class ScorpionModel extends AnimatedGeoModel<ScorpionEntity>
         return  new Identifier(JustaFantasyAddon.MOD_ID, "animations/scorpion.animation.json");
     }
 }
+*/

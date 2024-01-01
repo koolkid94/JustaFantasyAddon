@@ -23,11 +23,11 @@ public class ModRegistries {
         private static void registerAttributes() {
             FabricDefaultAttributeRegistry.register(ModEntities.CROW, CrowEntity.setAttributes());
             FabricDefaultAttributeRegistry.register(ModEntities.THORN, ThornEntity.setAttributes());
-            FabricDefaultAttributeRegistry.register(ModEntities.SCORPION, ScorpionEntity.setAttributes());
-            FabricDefaultAttributeRegistry.register(ModEntities.SHRIMP, ShrimpEntity.setAttributes());
-            FabricDefaultAttributeRegistry.register(ModEntities.NAUTILUS, NautilusEntity.setAttributes());
+            //FabricDefaultAttributeRegistry.register(ModEntities.SCORPION, ScorpionEntity.setAttributes());
+            //FabricDefaultAttributeRegistry.register(ModEntities.SHRIMP, ShrimpEntity.setAttributes());
+            //FabricDefaultAttributeRegistry.register(ModEntities.NAUTILUS, NautilusEntity.setAttributes());
             FabricDefaultAttributeRegistry.register(ModEntities.SHAMAN, ShamanEntity.setAttributes());
-            FabricDefaultAttributeRegistry.register(ModEntities.TAINTED_ENDERMAN, TaintedEndermanEntity.setAttributes());
+            //FabricDefaultAttributeRegistry.register(ModEntities.TAINTED_ENDERMAN, TaintedEndermanEntity.setAttributes());
 
         }
 

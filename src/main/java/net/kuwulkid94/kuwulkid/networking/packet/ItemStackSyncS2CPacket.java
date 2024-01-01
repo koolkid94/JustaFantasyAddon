@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.networking.packet;
+/*package net.kuwulkid94.kuwulkid.networking.packet;
 
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.kuwulkid94.kuwulkid.blocks.entity.CrudeAltarBlockEntity;
@@ -24,3 +24,5 @@ public class ItemStackSyncS2CPacket {
         }
     }
 }
+
+ */

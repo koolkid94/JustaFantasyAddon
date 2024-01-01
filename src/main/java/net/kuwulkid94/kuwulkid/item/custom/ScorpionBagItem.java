@@ -1,6 +1,6 @@
-package net.kuwulkid94.kuwulkid.item.custom;
+/*package net.kuwulkid94.kuwulkid.item.custom;
 
-import net.kuwulkid94.kuwulkid.entity.projectile.ThrownScorpionBagEntity;
+//import net.kuwulkid94.kuwulkid.entity.projectile.ThrownScorpionBagEntity;
 import net.kuwulkid94.kuwulkid.item.ModItems;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -35,3 +35,4 @@ public class ScorpionBagItem extends Item {
         return TypedActionResult.success(itemStack, world.isClient());
     }
 }
+ */

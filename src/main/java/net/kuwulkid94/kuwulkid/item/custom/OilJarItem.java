@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.item.custom;
+/*package net.kuwulkid94.kuwulkid.item.custom;
 
 import net.kuwulkid94.kuwulkid.entity.projectile.ThrownOilJarEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -40,3 +40,4 @@ public class OilJarItem extends Item {
         return TypedActionResult.success(itemStack, world.isClient());
     }
 }
+*/

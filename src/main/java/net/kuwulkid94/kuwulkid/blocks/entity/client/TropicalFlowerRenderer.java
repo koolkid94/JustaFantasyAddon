@@ -21,3 +21,4 @@ public class TropicalFlowerRenderer extends GeoBlockRenderer<TropicalFlowerEntit
         return RenderLayer.getEntityTranslucent(getTextureResource(animatable));
     }
 }
+

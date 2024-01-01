@@ -1,4 +1,4 @@
-package net.kuwulkid94.kuwulkid.entity.client;
+/*package net.kuwulkid94.kuwulkid.entity.client;
 
 import net.kuwulkid94.kuwulkid.entity.custom.ScorpionEntity;
 import net.minecraft.client.render.RenderLayer;
@@ -34,3 +34,5 @@ public class ScorpionRenderer extends GeoEntityRenderer<ScorpionEntity>{
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }
+*\
+ */

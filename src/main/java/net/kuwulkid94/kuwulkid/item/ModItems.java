@@ -46,9 +46,9 @@ public class ModItems {
             new SpawnEggItem(ModEntities.CROW,0x958e8d, 0x3b3635,
                     new FabricItemSettings().group(ItemGroup.MISC).maxCount(64)));
 
-    public static final Item SCORPION_SPAWN_EGG = registerItem("scorpion_spawn_egg",
-            new SpawnEggItem(ModEntities.SCORPION,0x444444, 0x8e7911,
-                    new FabricItemSettings().group(ItemGroup.MISC).maxCount(64)));
+    //public static final Item SCORPION_SPAWN_EGG = registerItem("scorpion_spawn_egg",
+            //new SpawnEggItem(ModEntities.SCORPION,0x444444, 0x8e7911,
+                 //   new FabricItemSettings().group(ItemGroup.MISC).maxCount(64)));
 
     public static final Item SHRIMP_SPAWN_EGG = registerItem("shrimp_spawn_egg",
             new SpawnEggItem(ModEntities.SHRIMP,0xff9ab8, 0xffbd9a,
@@ -86,11 +86,11 @@ public class ModItems {
 
     public static final Item PIKE = registerItem("pike", new PikeItem(ModToolMaterials.PRIMITIVE, 2, -3f, new FabricItemSettings().group(ItemGroup.COMBAT)));
 
-    public static final Item SCORPION_BAG = registerItem("scorpion_bag", new ScorpionBagItem(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(16)));
+    //public static final Item SCORPION_BAG = registerItem("scorpion_bag", new ScorpionBagItem(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(16)));
 
     public static final Item GUARDIAN_LASER = registerItem("guardian_laser", new GuardianLaserItem(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(1)));
 
-    public static final Item OIL_JAR = registerItem("oil_jar", new OilJarItem(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(16)));
+    //public static final Item OIL_JAR = registerItem("oil_jar", new OilJarItem(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(16)));
     public static final Item NAUTILUS_BUCKET = registerItem("nautilus_bucket", new EntityBucketItem(ModEntities.NAUTILUS, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().group(ItemGroup.MISC).maxCount(1)));
 
     public static final Item SCYTHE = registerItem("scythe", new ScytheItem(ModToolMaterials.MYSTIC, 6, -3.1f, new FabricItemSettings().group(ItemGroup.COMBAT)));

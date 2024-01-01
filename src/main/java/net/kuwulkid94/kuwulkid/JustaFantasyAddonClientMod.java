@@ -31,7 +31,7 @@ public class JustaFantasyAddonClientMod implements ClientModInitializer {
     public void onInitializeClient() {
         EntityRendererRegistry.register(ModEntities.CROW, CrowRenderer::new);
         EntityRendererRegistry.register(ModEntities.THORN, ThornRenderer::new);
-        EntityRendererRegistry.register(ModEntities.SCORPION, ScorpionRenderer::new);
+        //EntityRendererRegistry.register(ModEntities.SCORPION, ScorpionRenderer::new);
         EntityRendererRegistry.register(ModEntities.SHRIMP, ShrimpRenderer::new);
         EntityRendererRegistry.register(ModEntities.NAUTILUS, NautilusRenderer::new);
         EntityRendererRegistry.register(ModEntities.SHAMAN, ShamanRenderer::new);
@@ -49,19 +49,19 @@ public class JustaFantasyAddonClientMod implements ClientModInitializer {
         GeoArmorRenderer.registerArmorRenderer(new BoneArmorRenderer(), ModItems.SKULL_MASK);
         GeoArmorRenderer.registerArmorRenderer(new NecklaceArmorRenderer(), ModItems.NECKLACE);
 
-        EntityRendererRegistry.register(ModEntities.SCORPION_BAG_ENTITY, (context) ->
-                new FlyingItemEntityRenderer(context));
+        //EntityRendererRegistry.register(ModEntities.SCORPION_BAG_ENTITY, (context) ->
+                //new FlyingItemEntityRenderer(context));
 
-        EntityRendererRegistry.register(ModEntities.OIL_JAR_ENTITY, (context) ->
-                new FlyingItemEntityRenderer(context));
+        //EntityRendererRegistry.register(ModEntities.OIL_JAR_ENTITY, (context) ->
+                //new FlyingItemEntityRenderer(context));
 
         BlockEntityRendererRegistry.register(ModBlockEntities.TROPICAL_FLOWER_ENTITY, TropicalFlowerRenderer::new);
 
         GeoArmorRenderer.registerArmorRenderer(new VanguardArmorRenderer(), ModItems.VANGUARD_HELMET,ModItems.VANGUARD_CHESTPLATE, ModItems.VANGUARD_LEGGINGS,ModItems.VANGUARD_BOOTS);
 
 
-        EntityRendererRegistry.register(ModEntities.SCORPION_BAG_ENTITY, ThrownScorpionBagEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.OIL_JAR_ENTITY, ThrownOilJarEntityRenderer::new);
+       // EntityRendererRegistry.register(ModEntities.SCORPION_BAG_ENTITY, ThrownScorpionBagEntityRenderer::new);
+        // EntityRendererRegistry.register(ModEntities.OIL_JAR_ENTITY, ThrownOilJarEntityRenderer::new);
     }
 
 
